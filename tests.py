@@ -6,11 +6,11 @@ import pytest
 def test_location(web_browser):
     page = MainPage(web_browser)
     page.location.click()
-    page.location_input.send_keys("Улан-Удэ")
+    page.location_input.send_keys("Благовещенск")
     page.first_element_in_location.click()
     page.wait_page_loaded(3)
 
-    assert page.location.get_text() == "Улан-Удэ"
+    assert page.location.get_text() == "Благовещенск"
 
 @pytest.mark.pages
 #Проверка ссылки на страницу TOP Fashion
@@ -499,17 +499,6 @@ def test_ozon_business_footer_page(web_browser):
     page.wait_page_loaded()
 
     assert 'https://business.ozon.ru/?perehod=footer' in page.get_current_url()
-
-
-@pytest.mark.footer
-#Проверка ссылки на страницу Что продавать на Ozon
-def test_what_to_sell_footer_page(web_browser):
-    page = MainPage(web_browser)
-    page.what_to_sell_footer.click()
-    web_browser.switch_to.window(web_browser.window_handles[-1])
-    page.wait_page_loaded()
-
-    assert 'https://seller.ozon.ru/what_to_sell?perehod=footer' in page.get_current_url()
 
 
 @pytest.mark.footer
